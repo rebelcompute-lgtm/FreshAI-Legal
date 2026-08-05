@@ -41,7 +41,7 @@
 <header>
   <div class="logo">🌿 FreshAI</div>
   <h1>Privacy Policy</h1>
-  <div class="dates">Effective date: May 20, 2026 &nbsp;·&nbsp; Last updated: May 20, 2026</div>
+  <div class="dates">Effective date: May 20, 2026 &nbsp;·&nbsp; Last updated: August 5, 2026</div>
 </header>
 
 <nav>
@@ -61,6 +61,7 @@
   <p>When you use FreshAI, you may provide us with:</p>
   <ul>
     <li>Food item names, quantities, and expiry dates you add to your inventory</li>
+    <li>Nutrition information entered manually from a product's nutrition label (calories, protein, carbs, fat, fiber, servings)</li>
     <li>Household size and dietary preferences set during onboarding</li>
     <li>No account is required. Your identity is managed through your iCloud account</li>
     <li>Device preferences and settings you configure within the app</li>
@@ -76,17 +77,20 @@
   </ul>
 
   <h3>2.3 Camera and photo access</h3>
-  <p>FreshAI requests access to your device camera solely to scan grocery receipts and food item labels. We do not store photos taken during scanning. Images are processed in real time and immediately discarded after the relevant text is extracted.</p>
+  <p>FreshAI requests access to your device camera to support its AI-powered scanning features. You may photograph a food item directly, a grocery receipt, a product label, or a printed recipe card. The captured image is sent to our secure backend proxy and forwarded to Anthropic's API for analysis (food identification, expiry estimation, recipe parsing, or nutrition estimation). We do not store photos after the analysis is complete. Images are used only to fulfill the specific request you initiated and are not retained on our servers.</p>
 
   <h2>3. AI Processing and Third-Party AI Services</h2>
-  <p>FreshAI uses artificial intelligence to power two core features: food item recognition from scanned receipts, and personalized recipe suggestions based on your expiring ingredients.</p>
-  <p>To provide these features, FreshAI sends data to Anthropic, PBC, the maker of the Claude AI. Specifically:</p>
+  <p>FreshAI uses artificial intelligence to power several core features. All AI requests are routed through a secure backend proxy (Cloudflare Workers) before reaching Anthropic's API — your data is never sent directly from the app to Anthropic, and the Anthropic API key never exists on your device.</p>
+  <p>The following data is sent to Anthropic, PBC (the maker of the Claude AI) via this proxy:</p>
   <ul>
-    <li>Text extracted from scanned receipts is sent to Anthropic's API to identify food items and estimate expiry dates</li>
-    <li>Your list of expiring ingredients is sent to Anthropic's API to generate recipe suggestions</li>
+    <li><strong>Food item scanning:</strong> photos you take of food items, groceries, or receipts are analyzed to identify items and estimate expiry dates</li>
+    <li><strong>Recipe suggestions:</strong> your list of expiring ingredients (names, quantities, expiry status, and any saved nutrition data) is sent to generate personalized recipes</li>
+    <li><strong>Recipe scanning:</strong> photos of printed recipe cards or cookbook pages are analyzed to extract ingredients and directions</li>
+    <li><strong>Nutrition estimation:</strong> food item names and quantities are sent to estimate macro nutrition breakdowns (calories, protein, carbohydrates, fat, fiber)</li>
   </ul>
-  <p>Data sent to Anthropic is subject to Anthropic's Privacy Policy, available at <a href="https://anthropic.com/privacy">anthropic.com/privacy</a>. We do not send personally identifiable information (such as your name or email) to Anthropic as part of these requests. Anthropic may retain API request data in accordance with their own data retention policies.</p>
-  <p>We minimize data sent to third-party AI services and only transmit the minimum information necessary to fulfill your request.</p>
+  <p>All data is transmitted over encrypted HTTPS connections. We do not send personally identifiable information (such as your name or email address) to Anthropic as part of any of these requests.</p>
+  <p>Data sent to Anthropic is subject to Anthropic's Privacy Policy, available at <a href="https://anthropic.com/privacy">anthropic.com/privacy</a>. Data transiting through Cloudflare Workers is subject to Cloudflare's Privacy Policy, available at <a href="https://cloudflare.com/privacypolicy">cloudflare.com/privacypolicy</a>. Anthropic and Cloudflare may retain request data in accordance with their own data retention policies.</p>
+  <p>We minimize data sent to third-party services and only transmit the minimum information necessary to fulfill your request.</p>
 
   <h2>4. How We Use Your Information</h2>
   <p>We use the information we collect to:</p>
@@ -107,6 +111,7 @@
   <h2>6. How We Share Your Information</h2>
   <p>We do not sell your personal information. We do not share your personal information with third parties for their own marketing purposes. We may share your information only in the following limited circumstances:</p>
   <ul>
+    <li>With Cloudflare, Inc., as a secure backend proxy that routes AI requests to Anthropic on your behalf (as described in Section 3)</li>
     <li>With Anthropic, PBC, solely to process AI feature requests as described in Section 3</li>
     <li>With Apple, Inc., for App Store transactions, iCloud sync, and push notifications</li>
     <li>With analytics providers (such as anonymized crash reporting tools) to improve app stability</li>
